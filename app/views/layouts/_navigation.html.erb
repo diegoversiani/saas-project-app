@@ -9,7 +9,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
-            <li><%= link_to "My Images", images_path %></li>
+            <li><%= link_to "Invite Members", new_member_path, class: 'btn btn-primary navbar-btn' %></li>
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
