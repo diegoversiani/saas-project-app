@@ -15,3 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+# dotenv
+# Environment Variables files
+# TODO Comment out this rule if environment variables can be committed
+.env*
