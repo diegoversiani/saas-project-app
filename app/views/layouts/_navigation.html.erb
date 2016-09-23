@@ -9,7 +9,11 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
-            <li><%= link_to "Invite Members", new_member_path, class: 'btn btn-primary navbar-btn' %></li>
+            <li><%= button_to(new_member_path,
+                        method: :get,
+                        class: 'btn btn-primary navbar-btn') do %>
+              <i class="fa fa-user"></i> Invite Members
+            <% end %></li>
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -19,7 +23,7 @@
                         method: :get,
                         class: 'btn navbar-btn') do %>
                   <i class="fa fa-user"></i>
-                  <%= current_user.full_name.present? ? current_user.full_name : current_user.email%>
+                  <%= current_user.email %>
                 <% end %>
               </li>
               <li><%= button_to('Log out', destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn') %></li>

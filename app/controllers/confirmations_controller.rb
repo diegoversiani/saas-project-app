@@ -36,8 +36,8 @@ class ConfirmationsController < Milia::ConfirmationsController
        @confirmable.skip_confirm_change_password
 
       log_action( "devise pass-thru" )
-      self.resource = resource_class.confirm_by_token(:confirmation_token)
 
+      self.resource = resource_class.confirm_by_token(params[:confirmation_token])
       yield resource if block_given?
 
       if resource.errors.empty?
@@ -45,7 +45,7 @@ class ConfirmationsController < Milia::ConfirmationsController
       end
 
       if @confirmable.skip_confirm_change_password
-        sign_in_tenanted_and_redirect(resource)
+        sign_in_tenanted(resource)
       end
     else
       log_action( "password set form" )
@@ -57,7 +57,7 @@ class ConfirmationsController < Milia::ConfirmationsController
   end
 
   def after_confirmation_path_for(resource_name, resource)
-    if user_signed_in?
+    if user_sign_in?
       root_path
     else
       new_user_session_path
@@ -69,4 +69,5 @@ class ConfirmationsController < Milia::ConfirmationsController
     def set_confirmable()
       @confirmable = User.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
     end
+
 end
