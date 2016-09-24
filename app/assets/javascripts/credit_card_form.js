@@ -66,7 +66,7 @@ $(document).ready(function(){
     var $form = $(form);
 
     if (plan_type == undefined) {
-      plan_type = $('@tenant_plan :selected').val();
+      plan_type = $('#tenant_plan :selected').val();
     }
 
     if (plan_type === 'premium') {
