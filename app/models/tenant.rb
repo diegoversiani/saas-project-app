@@ -3,8 +3,11 @@ class Tenant < ActiveRecord::Base
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
   has_many :projects, dependent: :destroy
+  has_one :payment
   validates_uniqueness_of :name
   validates_presence_of :name
+
+  accepts_nested_attributes_for :payment
 
   def can_create_project?
     (plan == 'free' && projects.count < 1) || (plan == 'premium')
