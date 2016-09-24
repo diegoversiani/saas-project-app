@@ -8,12 +8,19 @@
         <%= link_to "Project Manager", root_path, class: 'navbar-brand' %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <% if user_signed_in? %>
+            <% if user_signed_in? && current_user.is_admin? %>
             <li><%= button_to(new_member_path,
                         method: :get,
                         class: 'btn btn-primary navbar-btn') do %>
               <i class="fa fa-user"></i> Invite Members
-            <% end %></li>
+              <% end %>
+            </li>
+            <li><%= button_to(edit_plan_path,
+                        method: :get,
+                        class: 'btn btn-primary navbar-btn') do %>
+              <i class="fa fa-rocket"></i> Change Plan
+              <% end %>
+            </li>
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
