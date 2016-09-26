@@ -27,6 +27,7 @@ This is the SaaS Project App from the Complete Ruby on Rails Developer course
 ```
 Tenant(Organization) **one_to_many** User
 User **many_to_many** Project
+User **one_to_one** Payment
 Project **one_to_many** Artifact
 ```
 
